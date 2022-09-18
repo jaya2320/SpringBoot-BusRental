@@ -6,6 +6,8 @@ import com.example.rental.service.BusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 
 @RestController
 public class BusController {
@@ -21,6 +23,11 @@ public class BusController {
     @GetMapping
     public Iterable<Bus> getBus(){
         return busService.getBuses();
+    }
+
+    @GetMapping("{busId}")
+    public Optional<Bus> getABus(@PathVariable Long busId){
+        return busService.getBusById(busId);
     }
 
     @PostMapping

@@ -1,11 +1,13 @@
 package com.example.rental.controller;
 
 import com.example.rental.models.Customer;
+import com.example.rental.repository.CustomerRepository;
 import com.example.rental.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController()
 @RequestMapping("Customer")
@@ -23,6 +25,12 @@ public class CustomerController {
         return customerService.viewCustomer();
 
     }
+
+    @GetMapping(value="{customerId}")
+    public Optional<Customer> getCustomerById(@PathVariable Long customerId){
+        return customerService.getCustomerById(customerId);
+    }
+
 
     @PostMapping
     public void addCustomer(@RequestBody Customer customer){

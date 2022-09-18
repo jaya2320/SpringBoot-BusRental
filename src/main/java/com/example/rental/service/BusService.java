@@ -37,4 +37,8 @@ public class BusService {
             System.out.println("OOPS! ID not present");
         }
     }
+
+    public Optional<Bus> getBusById(Long busId) {
+        return busRepository.findById(busId);
+    }
 }
